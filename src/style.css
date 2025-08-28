@@ -9,3 +9,14 @@
 :focus:hover {
     @apply ring-offset-4
 }
+
+
+.sidebar_container {
+    width: 220px;
+}
+
+@media (max-width: 1023px) {
+    .sidebar_container {
+        display: none;
+    }
+}
