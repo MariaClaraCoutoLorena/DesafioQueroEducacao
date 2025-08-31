@@ -16,9 +16,9 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
 ### 🎨 CSS
 
 - [ ] Ajustar o layout da página:
-    - [ ] Fixar a sidebar na lateral esquerda da página 📏.
-    - [ ] Definir a largura da sidebar em 220px 📏.
-    - [ ] Ocultar a sidebar em telas menores 📱 _(abaixo de 1023px)_.
+    - [x] Fixar a sidebar na lateral esquerda da página 📏.
+    - [x] Definir a largura da sidebar em 220px 📏.
+    - [x] Ocultar a sidebar em telas menores 📱 _(abaixo de 1023px)_.
     - [ ] O conteúdo principal deve ocupar o espaço restante da largura da página 📏.
     - [ ] Realizar ajustes necessários no layout para otimizar a experiência do usuário 🎨.
 - [ ] Ajustar a listagem de cards de ofertas:
