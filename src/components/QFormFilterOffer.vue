@@ -12,7 +12,7 @@
     modelValue: {
       level: string[];
       kind: string[];
-      maxPrice: number | null;
+      maxPrice: number;
     };
     minValue: number;
     maxValue: number;
@@ -24,6 +24,10 @@
   watch(() => props.modelValue, (newValue) => {
     emit('update:modelValue', newValue);
   }, { deep: true });
+
+  function formatPrice(price: number): string {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
+  }
 
 </script>
 
@@ -51,7 +55,7 @@
     />
 
     <QInputCheckbox
-    v-model="modelValue.kind" value="ead"
+      v-model="modelValue.kind" value="ead"
       label="A distância - EaD"
       :count="24"
     />
@@ -60,7 +64,7 @@
   <hr class="my-5">
 
   <QFieldset legend="Preço da mensalidade">
-    <QInputRange label="R$ 340,00" />
+    <QInputRange v-model="modelValue.maxPrice" :label="formatPrice(modelValue.maxPrice)" :minValue="minValue" :maxValue="maxValue" />
   </QFieldset>
 
   <hr class="mt-5">

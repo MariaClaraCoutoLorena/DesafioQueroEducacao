@@ -30,7 +30,7 @@
   const filters = ref({
     level: [] as string[],
     kind: [] as string[],
-    maxPrice: null as number | null,
+    maxPrice: 0 as number,
   });
   const offers = ref<Offer[]>([]);
   const isLoading = ref(true);
@@ -55,7 +55,7 @@
       offers.value = data
       maxValue.value = Math.max(...offers.value.map(offer => parseFloat(offer.offeredPrice)));
       minValue.value = Math.min(...offers.value.map(offer => parseFloat(offer.offeredPrice)));
-
+      filters.value.maxPrice = maxValue.value;
     } catch (e: any) {
       error.value = e.message || 'Ocorreu um erro inesperado.';
     } finally {
@@ -76,6 +76,9 @@
     }
     if (filters.value.kind.length > 0) {
       offersCopy = offersCopy.filter(offer => filters.value.kind.includes(offer.kind));
+    }
+    if (filters.value.maxPrice > 0) {
+      offersCopy = offersCopy.filter(offer => parseFloat(offer.offeredPrice) <= filters.value.maxPrice);
     }
 
     switch (order.value) {

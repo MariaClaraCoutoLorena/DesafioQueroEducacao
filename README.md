@@ -52,11 +52,11 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
     - [x] Ordenação pelo nome do curso 📝.
     - [x] Ordenação por `offeredPrice` 📉.
     - [x] Ordenação por `rating` 🌟.
-- [ ] Implementar filtros de ofertas:
+- [x] Implementar filtros de ofertas:
     - [x] Filtro realizado nos dados em memória 🔄.
     - [x] Filtrar por `level` 🎓.
     - [x] Filtrar por `kind` 🏫.
-    - [ ] Filtrar por `offeredPrice` com range 📉 _(exibir no formato `R$ 550,00`)_.
+    - [x] Filtrar por `offeredPrice` com range 📉 _(exibir no formato `R$ 550,00`)_.
     - [x] Permitir aplicar múltiplos filtros simultaneamente 📌.
 
 O arquivo `server.json` não deve ser alterado. 🚫
