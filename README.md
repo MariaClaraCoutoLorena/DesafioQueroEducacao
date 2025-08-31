@@ -21,13 +21,13 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
     - [x] Ocultar a sidebar em telas menores 📱 _(abaixo de 1023px)_.
     - [x] O conteúdo principal deve ocupar o espaço restante da largura da página 📏.
     - [ ] Realizar ajustes necessários no layout para otimizar a experiência do usuário 🎨.
-- [ ] Ajustar a listagem de cards de ofertas:
-    - [ ] Espaçamento de 16px entre os cards 📏.
-    - [ ] Exibir 1 card por linha em telas pequenas 📱 _(até 639px)_.
-    - [ ] Exibir 2 cards por linha em telas médias 📱 _(640px ~ 767px)_.
-    - [ ] Exibir 3 cards por linha em telas grandes 📱 _(768px ~ 1023px)_.
-    - [ ] Exibir 4 cards por linha em telas extra grandes 📱 _(1024px ~ 1535px)_.
-    - [ ] Exibir 5 cards por linha em telas maiores 📱 _(1536px ou mais)_.
+- [x] Ajustar a listagem de cards de ofertas:
+    - [x] Espaçamento de 16px entre os cards 📏.
+    - [x] Exibir 1 card por linha em telas pequenas 📱 _(até 639px)_.
+    - [x] Exibir 2 cards por linha em telas médias 📱 _(640px ~ 767px)_.
+    - [x] Exibir 3 cards por linha em telas grandes 📱 _(768px ~ 1023px)_.
+    - [x] Exibir 4 cards por linha em telas extra grandes 📱 _(1024px ~ 1535px)_.
+    - [x] Exibir 5 cards por linha em telas maiores 📱 _(1536px ou mais)_.
 
 ### 🛠️ JavaScript
 
