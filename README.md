@@ -31,7 +31,7 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
 
 ### 🛠️ JavaScript
 
-- [ ] Realizar uma requisição para a API de ofertas e exibir os cards 📦  
+- [x] Realizar uma requisição para a API de ofertas e exibir os cards 📦  
   _(`GET http://localhost:3000/offers`)_
 - [ ] Exibir corretamente os detalhes do card:
     - [ ] Tipo `presencial` como `Presencial` 🏫.

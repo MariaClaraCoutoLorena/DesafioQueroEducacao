@@ -2,20 +2,57 @@
   setup
   lang="ts"
 >
-import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
 
-import QHeader from "./components/QHeader.vue";
-import QInput from "./components/QInput.vue";
-import QButton from "./components/QButton.vue";
-import QCardOffer from "./components/QCardOffer.vue";
-import QFooter from "./components/QFooter.vue";
-import QLayout from "./components/QLayout.vue";
-import QListCard from "./components/QListCard.vue";
-import QSectionForm from "./components/QSectionForm.vue";
-import QFormOrderByOffer from "./components/QFormOrderByOffer.vue";
-import QFormFilterOffer from "./components/QFormFilterOffer.vue";
+  import QHeader from "./components/QHeader.vue";
+  import QInput from "./components/QInput.vue";
+  import QButton from "./components/QButton.vue";
+  import QCardOffer from "./components/QCardOffer.vue";
+  import QFooter from "./components/QFooter.vue";
+  import QLayout from "./components/QLayout.vue";
+  import QListCard from "./components/QListCard.vue";
+  import QSectionForm from "./components/QSectionForm.vue";
+  import QFormOrderByOffer from "./components/QFormOrderByOffer.vue";
+  import QFormFilterOffer from "./components/QFormFilterOffer.vue";
 
-const offers = ref([])
+  interface Offer {
+    id: string;
+    courseName: string;
+    rating: number;
+    fullPrice: string;
+    offeredPrice: string;
+    discount: string;
+    kind: string;
+    level: string;
+    iesLogo: string;
+    iesName: string;
+  }
+
+  const offers = ref<Offer[]>([]);
+  const isLoading = ref(true);
+  const error = ref<string | null>(null);
+
+  onMounted(async () => {
+    try {
+      const response = await fetch('http://localhost:3000/offers');
+
+      if (!response.ok) {
+        throw new Error('Falha ao acessar o servidor!');
+      }
+      const data = await response.json();
+      offers.value = data;
+
+      console.log(data);
+
+    } catch (e: any) {
+      error.value = e.message || 'Ocorreu um erro inesperado.';
+    } finally {
+      isLoading.value = false;
+    }
+  });
+
+
+
 </script>
 
 <template>
@@ -39,7 +76,7 @@ const offers = ref([])
     </template>
 
     <template #main-content>
-      
+
       <QSectionForm title="Veja as opções que encontramos">
         <template #filter>
           <QFormFilterOffer />
