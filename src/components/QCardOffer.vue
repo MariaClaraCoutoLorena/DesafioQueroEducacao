@@ -35,41 +35,41 @@
 
 <template>
 
-<article class="bg-white p-6 rounded-lg shadow-sm border flex flex-col justify-between items-start gap-3">
-  <img
-    :src="iesLogo"
-    :alt="iesName"
-    class="h-10 object-contain"
-  />
-  <QHeading
-    tag="h2"
-    size="sm"
-  >
-    {{ courseName }}
-  </QHeading>
-  <QRating :rating="rating" />
-  <QPrice
-    :full-price="fullPrice"
-    :offered-price="offeredPrice"
-    :discount="discount"
-  />
-  <div>
-    <QText tag="p">{{ kinds[kind] || kind }}</QText>
-    <QText
-      tag="p"
-      color="minor"
+  <article class="bg-white p-6 rounded-lg shadow-sm border flex flex-col justify-between items-start gap-3 h-full">
+    <img
+      :src="iesLogo"
+      :alt="iesName"
+      class="h-10 object-contain"
+    />
+    <QHeading
+      tag="h2"
       size="sm"
     >
-      {{ levels[level] || level }}
-    </QText>
-  </div>
-  <QButton
-    tag="a"
-    size="sm"
-    href="#"
-    class="w-full"
-  >
-    Quero esta bolsa
-  </QButton>
-</article>
+      {{ courseName }}
+    </QHeading>
+    <QRating :rating="rating" />
+    <QPrice
+      :full-price="fullPrice"
+      :offered-price="offeredPrice"
+      :discount="discount"
+    />
+    <div>
+      <QText tag="p">{{ kinds[kind] || kind }}</QText>
+      <QText
+        tag="p"
+        color="minor"
+        size="sm"
+      >
+        {{ levels[level] || level }}
+      </QText>
+    </div>
+    <QButton
+      tag="a"
+      size="sm"
+      href="#"
+      class="w-full"
+    >
+      Quero esta bolsa
+    </QButton>
+  </article>
 </template>
