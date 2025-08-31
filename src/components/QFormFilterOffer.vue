@@ -2,11 +2,29 @@
   setup
   lang="ts"
 >
+  import { defineProps, watch } from 'vue';
+  import QHeading from "./QHeading.vue";
+  import QInputCheckbox from "./QInputCheckbox.vue";
+  import QInputRange from "./QInputRange.vue";
+  import QFieldset from "./QFieldset.vue";
 
-import QHeading from "./QHeading.vue";
-import QInputCheckbox from "./QInputCheckbox.vue";
-import QInputRange from "./QInputRange.vue";
-import QFieldset from "./QFieldset.vue";
+  const props = defineProps<{
+    modelValue: {
+      level: string[];
+      kind: string[];
+      maxPrice: number | null;
+    };
+    minValue: number;
+    maxValue: number;
+  }>();
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: typeof props.modelValue): void;
+  }>();
+
+  watch(() => props.modelValue, (newValue) => {
+    emit('update:modelValue', newValue);
+  }, { deep: true });
+
 </script>
 
 <template>
@@ -16,22 +34,24 @@ import QFieldset from "./QFieldset.vue";
   <hr class="my-5">
 
   <QFieldset legend="Graduação">
-    <QInputCheckbox label="Bacharelado" />
+    <QInputCheckbox v-model="modelValue.level" value="bacharelado" label="Bacharelado" />
 
-    <QInputCheckbox label="Licenciatura" />
+    <QInputCheckbox v-model="modelValue.level" value="licenciatura" label="Licenciatura" />
 
-    <QInputCheckbox label="Técnologo" />
+    <QInputCheckbox v-model="modelValue.level" value="tecnologo" label="Técnologo" />
   </QFieldset>
 
   <hr class="my-5">
 
   <QFieldset legend="Modalidade do curso">
     <QInputCheckbox
+      v-model="modelValue.kind" value="presencial"
       label="Presencial"
       :count="87"
     />
 
     <QInputCheckbox
+    v-model="modelValue.kind" value="ead"
       label="A distância - EaD"
       :count="24"
     />

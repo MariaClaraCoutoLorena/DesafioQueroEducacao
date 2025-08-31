@@ -27,11 +27,18 @@
     iesName: string;
   }
   const order = ref('course-name');
+  const filters = ref({
+    level: [] as string[],
+    kind: [] as string[],
+    maxPrice: null as number | null,
+  });
   const offers = ref<Offer[]>([]);
   const isLoading = ref(true);
   const error = ref<string | null>(null);
   const searchInput = ref('');
   const searchQuery = ref('');
+  const maxValue = ref(0);
+  const minValue = ref(0);
 
   function applySearch() {
     searchQuery.value = searchInput.value;
@@ -46,6 +53,8 @@
       }
       const data = await response.json();
       offers.value = data
+      maxValue.value = Math.max(...offers.value.map(offer => parseFloat(offer.offeredPrice)));
+      minValue.value = Math.min(...offers.value.map(offer => parseFloat(offer.offeredPrice)));
 
     } catch (e: any) {
       error.value = e.message || 'Ocorreu um erro inesperado.';
@@ -55,11 +64,18 @@
   });
 
   const sortedFilterOffers = computed(() => {
+
     let offersCopy = [...offers.value];
 
     if (searchQuery.value !== '') {
       const query = searchQuery.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
       offersCopy = offersCopy.filter(offer => offer.courseName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(query));
+    }
+    if (filters.value.level.length > 0) {
+      offersCopy = offersCopy.filter(offer => filters.value.level.includes(offer.level));
+    }
+    if (filters.value.kind.length > 0) {
+      offersCopy = offersCopy.filter(offer => filters.value.kind.includes(offer.kind));
     }
 
     switch (order.value) {
@@ -105,14 +121,22 @@
     </template>
 
     <template #sidebar>
-      <QFormFilterOffer />
+      <QFormFilterOffer
+        v-model="filters"
+        :max-value="maxValue"
+        :min-value="minValue"
+      />
     </template>
 
     <template #main-content>
 
       <QSectionForm title="Veja as opções que encontramos">
         <template #filter>
-          <QFormFilterOffer />
+          <QFormFilterOffer
+            v-model="filters"
+            :max-value="maxValue"
+            :min-value="minValue"
+          />
         </template>
 
         <template #order-by>

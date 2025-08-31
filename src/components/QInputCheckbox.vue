@@ -2,18 +2,43 @@
   lang="ts"
   setup
 >
-import { defineProps } from 'vue';
-import QText from "./QText.vue";
+  import { defineProps, computed } from 'vue';
+  import QText from "./QText.vue";
 
-defineProps<{
-  label: string;
-}>();
+  const props = defineProps<{
+    label: string;
+    modelValue: string[];
+    value: string;
+  }>();
+
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: string[]): void;
+  }>();
+
+  const isChecked = computed(() => {
+    return props.modelValue.includes(props.value);
+  });
+
+  function handleChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const newModelValue = [...props.modelValue];
+
+    if (target.checked && !newModelValue.includes(props.value)) {
+      newModelValue.push(props.value);
+    } else if (!target.checked && newModelValue.includes(props.value)) {
+      const index = newModelValue.indexOf(props.value);
+      newModelValue.splice(index, 1);
+    }
+    emit('update:modelValue', newModelValue);
+  }
 </script>
 
 <template>
 <label class="flex items-center text-sm py-2 justify-items-start cursor-pointer">
   <input
     type="checkbox"
+    :checked="isChecked"
+    @change="handleChange"
   />
   <QText
     tag="span"
