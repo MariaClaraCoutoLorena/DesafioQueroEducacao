@@ -44,10 +44,10 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
     - [x] Formatar os valores de `fullPrice` e `offeredPrice` como moeda 💰 _(Ex: `R$ 550,00`)_.
     - [x] Calcular e exibir a porcentagem de desconto 📉.
     - [x] Exibir a porcentagem de desconto no formato `27%` 📉.
-- [ ] Implementar a busca de ofertas por nome:
-    - [ ] A busca deve ser realizada nos dados em memória, sem nova requisição 🔄.
-    - [ ] Busca **case-insensitive** 🔄.
-    - [ ] A busca só ocorre ao pressionar o botão de busca 🔍.
+- [x] Implementar a busca de ofertas por nome:
+    - [x] A busca deve ser realizada nos dados em memória, sem nova requisição 🔄.
+    - [x] Busca **case-insensitive** 🔄.
+    - [x] A busca só ocorre ao pressionar o botão de busca 🔍.
 - [x] Implementar a ordenação de ofertas:
     - [x] Ordenação pelo nome do curso 📝.
     - [x] Ordenação por `offeredPrice` 📉.

@@ -30,6 +30,12 @@
   const offers = ref<Offer[]>([]);
   const isLoading = ref(true);
   const error = ref<string | null>(null);
+  const searchInput = ref('');
+  const searchQuery = ref('');
+
+  function applySearch() {
+    searchQuery.value = searchInput.value;
+  }
 
   onMounted(async () => {
     try {
@@ -48,8 +54,13 @@
     }
   });
 
-  const sortedOffers = computed(() => {
-    const offersCopy = [...offers.value];
+  const sortedFilterOffers = computed(() => {
+    let offersCopy = [...offers.value];
+
+    if (searchQuery.value !== '') {
+      const query = searchQuery.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      offersCopy = offersCopy.filter(offer => offer.courseName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(query));
+    }
 
     switch (order.value) {
       case 'course-name':
@@ -66,6 +77,9 @@
     }
   });
 
+ 
+
+
 
 
 </script>
@@ -75,14 +89,18 @@
 
     <template #header>
       <QHeader>
-        <QInput
-          type="search"
-          id="site-search"
-          name="q"
-          placeholder="Busque o curso ideal para você"
-          aria-label="Buscar cursos e bolsas"
-        />
-        <QButton type="submit">Buscar</QButton>
+        <form @submit.prevent="applySearch" class="flex w-full">
+          <QInput
+            v-model="searchInput"
+            type="search"
+            id="site-search"
+            name="q"
+            placeholder="Busque o curso ideal para você"
+            aria-label="Buscar cursos e bolsas"
+          />
+          <QButton type="submit">Buscar</QButton>
+        </form>
+        
       </QHeader>
     </template>
 
@@ -102,7 +120,7 @@
         </template>
       </QSectionForm>
 
-      <QListCard :cards="sortedOffers" class="mt-6">
+      <QListCard :cards="sortedFilterOffers" class="mt-6">
         <template #default="{ card }">
           <QCardOffer
             :course-name="card.courseName"
