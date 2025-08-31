@@ -26,6 +26,10 @@
     'tecnologo': 'Graduação (tecnólogo)',
     'licenciatura': 'Graduação (licenciatura)'
   }
+  const kinds = {
+    'ead': 'EaD',
+    'presencial': 'Presencial'
+  }
 
 </script>
 
@@ -50,7 +54,7 @@
     :discount="discount"
   />
   <div>
-    <QText tag="p">{{ kind }}</QText>
+    <QText tag="p">{{ kinds[kind] || kind }}</QText>
     <QText
       tag="p"
       color="minor"
