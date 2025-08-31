@@ -36,9 +36,9 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
 - [ ] Exibir corretamente os detalhes do card:
     - [ ] Tipo `presencial` como `Presencial` 🏫.
     - [ ] Tipo `ead` como `EaD` 🏠.
-    - [ ] Nível `bacharelado` como `Graduação (bacharelado)` 🎓.
-    - [ ] Nível `tecnologo` como `Graduação (tecnólogo)` 🎓.
-    - [ ] Nível `licenciatura` como `Graduação (licenciatura)` 🎓.
+    - [x] Nível `bacharelado` como `Graduação (bacharelado)` 🎓.
+    - [x] Nível `tecnologo` como `Graduação (tecnólogo)` 🎓.
+    - [x] Nível `licenciatura` como `Graduação (licenciatura)` 🎓.
     - [ ] Exibir estrelas conforme a propriedade `rating` 🌟.
     - [ ] Exibir meia estrela para valores fracionados de `rating` _(Ex: `4.9`)_.
     - [ ] Formatar os valores de `fullPrice` e `offeredPrice` como moeda 💰 _(Ex: `R$ 550,00`)_.

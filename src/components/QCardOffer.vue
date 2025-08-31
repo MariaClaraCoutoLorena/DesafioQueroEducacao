@@ -2,24 +2,31 @@
   lang="ts"
   setup
 >
-import { defineProps } from 'vue';
-import QHeading from "./QHeading.vue";
-import QButton from "./QButton.vue";
-import QRating from "./QRating.vue";
-import QPrice from "./QPrice.vue";
-import QText from "./QText.vue";
+  import { defineProps } from 'vue';
+  import QHeading from "./QHeading.vue";
+  import QButton from "./QButton.vue";
+  import QRating from "./QRating.vue";
+  import QPrice from "./QPrice.vue";
+  import QText from "./QText.vue";
 
-defineProps<{
-  courseName: string;
-  rating: number;
-  fullPrice: string;
-  offeredPrice: string;
-  discount: string;
-  kind: string;
-  level: string;
-  iesLogo: string;
-  iesName: string;
-}>();
+  defineProps<{
+    courseName: string;
+    rating: number;
+    fullPrice: string;
+    offeredPrice: string;
+    discount: string;
+    kind: string;
+    level: string;
+    iesLogo: string;
+    iesName: string;
+  }>();
+
+  const levels = {
+    'bacharelado': 'Graduação (bacharelado)',
+    'tecnologo': 'Graduação (tecnólogo)',
+    'licenciatura': 'Graduação (licenciatura)'
+  }
+
 </script>
 
 <template>
@@ -49,7 +56,7 @@ defineProps<{
       color="minor"
       size="sm"
     >
-      {{ level }}
+      {{ levels[level] || level }}
     </QText>
   </div>
   <QButton
