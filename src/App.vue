@@ -21,7 +21,6 @@
     rating: number;
     fullPrice: string;
     offeredPrice: string;
-    discount: string;
     kind: string;
     level: string;
     iesLogo: string;
@@ -92,9 +91,9 @@
           <QCardOffer
             :course-name="card.courseName"
             :rating="card.rating"
-            :full-price="card.fullPrice"
-            :offered-price="card.offeredPrice"
-            :discount="card.discount"
+            :full-price="parseFloat(card.fullPrice)"
+            :offered-price="parseFloat(card.offeredPrice)"
+            :discount="card.fullPrice && card.offeredPrice ? ( 1 - parseFloat(card.offeredPrice)/parseFloat(card.fullPrice)) : 0"
             :kind="card.kind"
             :level="card.level"
             :ies-logo="card.iesLogo"

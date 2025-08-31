@@ -12,9 +12,9 @@
   defineProps<{
     courseName: string;
     rating: number;
-    fullPrice: string;
-    offeredPrice: string;
-    discount: string;
+    fullPrice: number;
+    offeredPrice: number;
+    discount: number;
     kind: string;
     level: string;
     iesLogo: string;

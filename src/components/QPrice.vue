@@ -2,15 +2,21 @@
   lang="ts"
   setup
 >
-import { defineProps } from 'vue';
-import QText from "./QText.vue";
-import QBadge from "./QBadge.vue";
+  import { defineProps } from 'vue';
+  import QText from "./QText.vue";
+  import QBadge from "./QBadge.vue";
 
-defineProps<{
-  fullPrice: string;
-  offeredPrice: string;
-  discount: string;
-}>()
+  defineProps<{
+    fullPrice: number;
+    offeredPrice: number ;
+    discount: number;
+  }>()
+
+  function formatPrice(price: number): string {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
+  }
+
+
 </script>
 
 <template>
@@ -21,18 +27,18 @@ defineProps<{
       color="minor"
       size="sm"
     >
-      {{ fullPrice }}
+      {{ formatPrice(fullPrice) }}
     </QText>
     <QText
       tag="ins"
       size="lg"
       weight="semibold"
     >
-      {{ offeredPrice }}
+      {{ formatPrice(offeredPrice) }}
     </QText>
   </div>
   <QBadge>
-    {{ discount }}
+    {{ `- ${(discount*100).toFixed(0)}%` }}
   </QBadge>
 </div>
 </template>
