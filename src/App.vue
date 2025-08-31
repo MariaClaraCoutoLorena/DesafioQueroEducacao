@@ -19,55 +19,62 @@ const offers = ref([])
 </script>
 
 <template>
-<QLayout>
-  <template #header>
-    <QHeader>
-      <QInput
-        type="search"
-        id="site-search"
-        name="q"
-        placeholder="Busque o curso ideal para você"
-        aria-label="Buscar cursos e bolsas"
-      />
-      <QButton type="submit">Buscar</QButton>
-    </QHeader>
-  </template>
+  <QLayout>
 
-  <template #sidebar>
-    <QFormFilterOffer />
-  </template>
+    <template #header>
+      <QHeader>
+        <QInput
+          type="search"
+          id="site-search"
+          name="q"
+          placeholder="Busque o curso ideal para você"
+          aria-label="Buscar cursos e bolsas"
+        />
+        <QButton type="submit">Buscar</QButton>
+      </QHeader>
+    </template>
 
-  <QSectionForm title="Veja as opções que encontramos">
-    <template #filter>
+    <template #sidebar>
       <QFormFilterOffer />
     </template>
 
-    <template #order-by>
-      <QFormOrderByOffer />
-    </template>
-  </QSectionForm>
+    <template #main-content>
+      
+      <QSectionForm title="Veja as opções que encontramos">
+        <template #filter>
+          <QFormFilterOffer />
+        </template>
 
-  <QListCard
-    :cards="offers"
-    class="mt-6"
-  >
-    <template #default="{ card }">
-      <QCardOffer
-        :course-name="card.courseName"
-        :rating="card.rating"
-        :full-price="card.fullPrice"
-        :offered-price="card.offeredPrice"
-        :discount="card.discount"
-        :kind="card.kind"
-        :level="card.level"
-        :ies-logo="card.iesLogo"
-        :ies-name="card.iesName"
-      />
-    </template>
-  </QListCard>
+        <template #order-by>
+          <QFormOrderByOffer />
+        </template>
+      </QSectionForm>
 
-  <template #footer>
-    <QFooter />
-  </template>
-</QLayout>
+      <QListCard :cards="offers" class="mt-6">
+        <template #default="{ card }">
+          <QCardOffer
+            :course-name="card.courseName"
+            :rating="card.rating"
+            :full-price="card.fullPrice"
+            :offered-price="card.offeredPrice"
+            :discount="card.discount"
+            :kind="card.kind"
+            :level="card.level"
+            :ies-logo="card.iesLogo"
+            :ies-name="card.iesName"
+          />
+        </template>
+      </QListCard>
+
+    </template>
+
+    
+
+    
+
+    <template #footer>
+      <QFooter />
+    </template>
+
+  </QLayout>
 </template>

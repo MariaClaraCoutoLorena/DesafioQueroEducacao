@@ -10,7 +10,7 @@ import QFieldset from "./QFieldset.vue";
 </script>
 
 <template>
-<form action="#" class="sidebar_container">
+<form action="#">
   <QHeading tag="h1">Filtros</QHeading>
 
   <hr class="my-5">

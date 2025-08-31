@@ -14,15 +14,15 @@ import QRow from "./QRow.vue";
   </div>
 
   <div class="max-w-screen-2xl mx-auto w-full">
-    <QRow>
+    <QRow class="flex">
       <template #sidebar>
-        <aside class="pr-8 border-r py-6 h-full">
+        <aside class="w-[220px] pr-8 border-r py-6 h-full hidden lg:block">
           <slot name="sidebar"></slot>
         </aside>
       </template>
 
       <main class="py-6">
-        <slot></slot>
+        <slot name="main-content"></slot>
       </main>
     </QRow>
   </div>
