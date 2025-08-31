@@ -33,7 +33,7 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
 
 - [x] Realizar uma requisição para a API de ofertas e exibir os cards 📦  
   _(`GET http://localhost:3000/offers`)_
-- [ ] Exibir corretamente os detalhes do card:
+- [x] Exibir corretamente os detalhes do card:
     - [x] Tipo `presencial` como `Presencial` 🏫.
     - [x] Tipo `ead` como `EaD` 🏠.
     - [x] Nível `bacharelado` como `Graduação (bacharelado)` 🎓.
@@ -48,10 +48,10 @@ Seu objetivo é trabalhar em um projeto já iniciado, corrigindo detalhes de **C
     - [ ] A busca deve ser realizada nos dados em memória, sem nova requisição 🔄.
     - [ ] Busca **case-insensitive** 🔄.
     - [ ] A busca só ocorre ao pressionar o botão de busca 🔍.
-- [ ] Implementar a ordenação de ofertas:
-    - [ ] Ordenação pelo nome do curso 📝.
-    - [ ] Ordenação por `offeredPrice` 📉.
-    - [ ] Ordenação por `rating` 🌟.
+- [x] Implementar a ordenação de ofertas:
+    - [x] Ordenação pelo nome do curso 📝.
+    - [x] Ordenação por `offeredPrice` 📉.
+    - [x] Ordenação por `rating` 🌟.
 - [ ] Implementar filtros de ofertas:
     - [ ] Filtro realizado nos dados em memória 🔄.
     - [ ] Filtrar por `level` 🎓.

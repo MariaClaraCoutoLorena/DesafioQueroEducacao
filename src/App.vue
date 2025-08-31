@@ -2,7 +2,7 @@
   setup
   lang="ts"
 >
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, computed } from 'vue';
 
   import QHeader from "./components/QHeader.vue";
   import QInput from "./components/QInput.vue";
@@ -26,7 +26,7 @@
     iesLogo: string;
     iesName: string;
   }
-
+  const order = ref('course-name');
   const offers = ref<Offer[]>([]);
   const isLoading = ref(true);
   const error = ref<string | null>(null);
@@ -39,14 +39,30 @@
         throw new Error('Falha ao acessar o servidor!');
       }
       const data = await response.json();
-      offers.value = data;
-
-      console.log(data);
+      offers.value = data
 
     } catch (e: any) {
       error.value = e.message || 'Ocorreu um erro inesperado.';
     } finally {
       isLoading.value = false;
+    }
+  });
+
+  const sortedOffers = computed(() => {
+    const offersCopy = [...offers.value];
+
+    switch (order.value) {
+      case 'course-name':
+        return offersCopy.sort((a, b) => a.courseName.localeCompare(b.courseName));
+      
+      case 'price':
+        return offersCopy.sort((a, b) => parseFloat(a.offeredPrice) - parseFloat(b.offeredPrice));
+        
+      case 'rating':
+        return offersCopy.sort((a, b) => b.rating - a.rating);
+        
+      default:
+        return offersCopy;
     }
   });
 
@@ -82,11 +98,11 @@
         </template>
 
         <template #order-by>
-          <QFormOrderByOffer />
+          <QFormOrderByOffer v-model="order"/>
         </template>
       </QSectionForm>
 
-      <QListCard :cards="offers" class="mt-6">
+      <QListCard :cards="sortedOffers" class="mt-6">
         <template #default="{ card }">
           <QCardOffer
             :course-name="card.courseName"
