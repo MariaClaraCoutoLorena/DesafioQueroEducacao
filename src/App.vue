@@ -116,10 +116,10 @@
             name="q"
             placeholder="Busque o curso ideal para você"
             aria-label="Buscar cursos e bolsas"
+            class="mr-2"
           />
           <QButton type="submit">Buscar</QButton>
         </form>
-        
       </QHeader>
     </template>
 
